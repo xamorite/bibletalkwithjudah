@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Bible Talk To Judah</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bible Talk To Judah</title>
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
@@ -21,12 +21,17 @@
         font-size: 20vh;
         font-family: "Unbounded", sans-serif;
       }
-      span, h2 {
+      span,
+      h2 {
         font-family: "Unbounded", sans-serif;
       }
       @keyframes marquee {
-        0% { transform: translateX(0%); }
-        100% { transform: translateX(-100%); }
+        0% {
+          transform: translateX(0%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
       }
       .animate-loop-scroll {
         animation: marquee 30s linear infinite;
@@ -36,93 +41,116 @@
         background-position: center;
       }
       .lifestyle-image {
-        background-image: url('https://via.placeholder.com/1000x1500/000000/FFFFFF?text=LIFESTYLE+IMAGE');
+        background-image: url("https://via.placeholder.com/1000x1500/000000/FFFFFF?text=LIFESTYLE+IMAGE");
       }
       .avatar-active {
-        box-shadow: 0 0 0 4px #FFFFFF;
+        box-shadow: 0 0 0 4px #ffffff;
         border: 2px solid #8b5cf6;
       }
-       .hero-bg {
-            background-color: #0b1c2b; 
-        }
-        /* Custom styling for the abstract green/purple element in the background */
-       .abstract-bg {
-            /* Using a placeholder image for the abstract shapes */
-            background-image: url('./abstract.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        .contanct-us{
-            background-image: url('./contactus.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        /* Custom styles for Pure Black Mode */
-        .testimonial-card {
-            /* Keep card background pure black for consistency */
-            box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.1), 0 4px 6px -2px rgba(255, 255, 255, 0.05); /* White shadow for contrast */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .testimonial-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 20px 25px -5px rgba(255, 255, 255, 0.15), 0 10px 10px -5px rgba(255, 255, 255, 0.08);
-        }
-    </style>
-     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
-</head>
-<body class="bg-black text-white">
-    <nav class="w-full sticky top-0 z-50">
-      <div class="bg-white p-5 shadow-md shadow-purple-200/50 rounded-md flex flex-row justify-between">
-                <span class="font-semibold text-lg md:text-xl text-gray-800"><a href="./index.html">BIBLE TALK WITH JUDAH </a></span>
+      .hero-bg {
+        background-color: #0b1c2b;
+      }
+      /* Custom styling for the abstract green/purple element in the background */
+      .abstract-bg {
+        /* Using a placeholder image for the abstract shapes */
+        background-image: url("./abstract.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+      .contanct-us {
+        background-image: url("./contactus.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+      /* Custom styles for Pure Black Mode */
+      .testimonial-card {
+        box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.1),
+          0 4px 6px -2px rgba(255, 255, 255, 0.05); /* White shadow for contrast */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .testimonial-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 25px -5px rgba(255, 255, 255, 0.15),
+          0 10px 10px -5px rgba(255, 255, 255, 0.08);
+      }
 
-        <ul class="flex gap-4 text-cl font-medium text-gray-800"><li><a href="./gallery.html">Gallery</a></li></ul>
+      /* The conflicting .initial-hidden CSS has been removed */
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </head>
+  <body class="bg-black text-white">
+    <nav class="w-full">
+      <div
+        class="bg-white p-5 shadow-md shadow-purple-200/50 rounded-md flex flex-row justify-between"
+      >
+        <span class="font-semibold text-lg md:text-xl text-gray-800"
+          ><a href="./index.html">BIBLE TALK WITH JUDAH </a></span
+        >
+
+        <ul class="flex gap-4 text-cl font-medium text-gray-800">
+          <li><a href="./gallery.html">Gallery</a></li>
+        </ul>
       </div>
     </nav>
-    
+
     <section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl md:text-5xl font-extrabold text-center tracking-tight text-white mb-12 md:mb-16 leading-tight">
-                Trusted by attendees and <br> those who have grown
-            </h2>
-            
-            <div id="testimonials-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                </div>
-        </div>
+      <div class="max-w-6xl mx-auto">
+        <h2
+          class="text-3xl md:text-5xl font-extrabold text-center tracking-tight text-white mb-12 md:mb-16 leading-tight"
+        >
+          Trusted by attendees and <br />
+          those who have grown
+        </h2>
+
+        <div
+          id="testimonials-grid"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+        ></div>
+      </div>
     </section>
+    <hr>
+     <footer class=" text-center py-4 mt-auto shadow-inner shadow-purple-200 rounded-t-md">
+      <span class="text-sm text-white-600">&copy; 2025 Bible Talk with Judah. </span>
+    </footer>  
     <script>
-         const testimonials = [
-        {
-          text: "What better treasure than to gather around than God’s Word?In a world consumed with gossip and empty chatter, Bible Talk with Judah offers platforms for people to have edifying conversations around God's Word.",
-          author: "Samuel - 🇳🇬",
-          imageUrl: "https://randomuser.me/api/portraits/men/32.jpg"
-        },
+      const testimonials = [
         {
           text: "I was privileged and very honored to attend the Bible discussions on Romans and Hebrews. It was such an eye-opening experience. The sessions didn’t just go through scripture; they created space for reflection, real conversations, and practical takeaways that I could apply to everyday life. I found myself growing both in understanding and in faith, and the group dynamic made learning enjoyable and meaningful. I would absolutely recommend these discussions to anyone who wants to deepen their relationship with God and explore the Bible in a more interactive way.",
           author: "Eva - 🇰🇪",
-          imageUrl: "https://randomuser.me/api/portraits/women/44.jpg"
+          imageUrl: "https://randomuser.me/api/portraits/women/44.jpg",
         },
         {
           text: "I would like to appreciate Judah for taking the effort to teach us Romans & Hebrews. What I knew God & my thoughts about God & His people has completely changed. I am more relaxed now knowing God is in Control & I understand deeply the sacrifice that Jesus made on the cross for me. I would recommend others to attend these bible studies as it helps us learn & understand the word of God better.",
           author: "Beula - 🇮🇳",
-          imageUrl: "https://randomuser.me/api/portraits/women/65.jpg"
+          imageUrl: "https://randomuser.me/api/portraits/women/65.jpg",
         },
         {
           text: "I had the privilege of joining a deep Bible discussion on the books of Romans and Hebrews led by Judah, and it was truly one of the best Bible studies I’ve ever been part of. The teaching was both eye-opening and thought-provoking, shifting my perspective and transforming the way I approach my own Bible study. I would wholeheartedly recommend it to anyone who wants to grow deeper in the Word and strengthen their biblical understanding.. One of the best looking themes out there.",
           author: "Hanna - 🇪🇹",
-          imageUrl: "https://randomuser.me/api/portraits/men/76.jpg"
+          imageUrl: "https://randomuser.me/api/portraits/men/76.jpg",
+        },
+        {
+          text: "What better treasure than to gather around than God’s Word?In a world consumed with gossip and empty chatter, Bible Talk with Judah offers platforms for people to have edifying conversations around God's Word.",
+          author: "Samuel - 🇳🇬",
+          imageUrl: "https://randomuser.me/api/portraits/men/32.jpg",
         },
       ];
 
-        // JavaScript to render the testimonials
-        document.addEventListener('DOMContentLoaded', () => {
-            const grid = document.getElementById('testimonials-grid');
-            
-            testimonials.forEach(testimonial => {
-                const cardHtml = `
-                    <div class="testimonial-card bg-black p-6 rounded-xl border border-gray-700 flex flex-col justify-between h-full">
+      // JavaScript to render the testimonials with sequential animation
+      document.addEventListener("DOMContentLoaded", () => {
+        const grid = document.getElementById("testimonials-grid");
+
+        testimonials.forEach((testimonial, index) => {
+          // Calculate delay: 0.2s for the first card, 0.4s for the second, 0.6s for the third, etc.
+          const delay = (index + 1) * 200;
+
+          const cardHtml = `
+                    <div class="testimonial-card bg-black p-6 rounded-xl border border-gray-700 flex flex-col justify-between h-full 
+                        animate__animated animate__fadeInUp" 
+                        style="animation-delay: ${delay}ms;">
                         <div>
                             <p class="text-white leading-relaxed italic mb-6">
                                 "${testimonial.text}"
@@ -131,16 +159,18 @@
                         
                         <div class="flex items-center mt-4">
                             <img src="${testimonial.imageUrl}" alt="Avatar of ${testimonial.author}" 
+                                loading="lazy"
                                 class="w-12 h-12 rounded-full object-cover mr-4 ring-2 ring-purple-400 p-0.5">
                             <div>
                                 <p class="font-semibold text-white">${testimonial.author}</p>
-                                </div>
+                            </div>
                         </div>
                     </div>
                 `;
-                grid.insertAdjacentHTML('beforeend', cardHtml);
-            });
+          grid.insertAdjacentHTML("beforeend", cardHtml);
         });
+        // The elements should now appear one after the other as intended!
+      });
     </script>
-</body>
+  </body>
 </html>

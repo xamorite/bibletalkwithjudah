@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bible Talk To Judah</title>
+    <title>Bible Talk To Judah - Gallery</title>
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
@@ -17,16 +17,59 @@
     />
 
     <style>
+      /* Custom style for the animated gallery item */
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        border-radius: 0.75rem; /* rounded-xl */
+        box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.1);
+      }
+
+      .gallery-image {
+        transition: transform 0.5s ease-in-out;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .gallery-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(139, 92, 246, 0.7); /* purple-500 with opacity */
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .gallery-item:hover .gallery-image {
+        transform: scale(1.05); /* Subtle scale-up effect */
+      }
+
+      .gallery-item:hover .gallery-overlay {
+        opacity: 1; /* Show overlay on hover */
+      }
       h1 {
         font-size: 20vh;
         font-family: "Unbounded", sans-serif;
       }
-      span, h2 {
+      span,
+      h2 {
         font-family: "Unbounded", sans-serif;
       }
       @keyframes marquee {
-        0% { transform: translateX(0%); }
-        100% { transform: translateX(-100%); }
+        0% {
+          transform: translateX(0%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
       }
       .animate-loop-scroll {
         animation: marquee 30s linear infinite;
@@ -36,45 +79,154 @@
         background-position: center;
       }
       .lifestyle-image {
-        background-image: url('https://via.placeholder.com/1000x1500/000000/FFFFFF?text=LIFESTYLE+IMAGE');
+        background-image: url("https://via.placeholder.com/1000x1500/000000/FFFFFF?text=LIFESTYLE+IMAGE");
       }
       .avatar-active {
-        box-shadow: 0 0 0 4px #FFFFFF;
+        box-shadow: 0 0 0 4px #ffffff;
         border: 2px solid #8b5cf6;
       }
-       .hero-bg {
-            background-color: #0b1c2b; 
-        }
-        /* Custom styling for the abstract green/purple element in the background */
-       .abstract-bg {
-            /* Using a placeholder image for the abstract shapes */
-            background-image: url('./abstract.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        .contanct-us{
-            background-image: url('./contactus.jpg');
-            background-size: cover;
-            background-position: center;
-        }
+      .hero-bg {
+        background-color: #0b1c2b;
+      }
+      /* Custom styling for the abstract green/purple element in the background */
+      .abstract-bg {
+        /* Using a placeholder image for the abstract shapes */
+        background-image: url("./abstract.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+      .contanct-us {
+        background-image: url("./contactus.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+      /* Custom styles for Pure Black Mode */
+      .testimonial-card {
+        box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.1),
+          0 4px 6px -2px rgba(255, 255, 255, 0.05); /* White shadow for contrast */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .testimonial-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 25px -5px rgba(255, 255, 255, 0.15),
+          0 10px 10px -5px rgba(255, 255, 255, 0.08);
+      }
     </style>
-     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
   </head>
-  <body class="bg-gray-50 flex flex-col min-h-screen">
-    <!-- Card Component -->
-   <nav class="w-full sticky top-0 z-50">
-      <div class="bg-white p-5 shadow-md shadow-purple-200/50 rounded-md flex flex-row justify-between">
-        <span class="font-semibold text-lg md:text-xl"><a href="./index.html">BIBLE TALK WITH JUDAH </a></span>
+  <body class="bg-black text-white">
+    <!-- Navigation Bar (Reusing the corrected white nav with the h-12 logo) -->
+    <nav class="w-full">
+      <div
+        class="bg-white p-5 shadow-md shadow-purple-200/50 rounded-md flex flex-row justify-between"
+      >
+        <span class="font-semibold text-lg md:text-xl text-gray-800"
+          ><a href="./index.html">BIBLE TALK WITH JUDAH </a></span
+        >
 
-        <ul class="flex gap-4 text-cl font-medium "><li><a href="./testimonials.html">Testimonials</a></li></ul>
+        <ul class="flex gap-4 text-cl font-medium text-gray-800">
+          <li><a href="./testimonials.html">Testimonials</a></li>
+        </ul>
       </div>
     </nav>
 
-    <h1 class="text-center">Gallery</h1>
-<hr/>
+    <!-- Gallery Section -->
+    <main class="flex-grow py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <h2
+          class="text-4xl md:text-6xl font-extrabold text-center tracking-tight text-white mb-12 md:mb-16"
+        >
+          Snapshots From Our Previous Discussions
+        </h2>
+
+        <!-- Gallery Grid Container -->
+        <div
+          id="gallery-container"
+          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
+        >
+          <!-- Gallery items will be inserted here by JavaScript -->
+        </div>
+      </div>
+    </main>
+    <!-- End Gallery Section -->
+
+    <!-- Footer (Placeholder for continuity) -->
+     <hr>
+    <footer
+      class=" text-center py-4 mt-auto shadow-inner shadow-purple-200 rounded-t-md"
+    >
+      <span
+        class="text-sm text-white-600 flex justify-center items-center space-x-1"
+      >
+        <span>&copy; 2025</span>
+        <a href="./index.html" class="flex items-center">
+          Bible Talk with Judah
+        </a>
+      </span>
+    </footer>
+
+    <script>
+      // Array of images with captions (using mock data)
+      const galleryImages = [
+        {
+          url: "./assets/gallery/image00001.webp",
+          caption: "Deep Dive into Romans",
+        },
+        {
+          url: "./assets/gallery/image00007.webp",
+          caption: "The Excellency of Christ (Hebrews)",
+        },
+        {
+          url: "./assets/gallery/image00008.webp",
+          caption: "The Excellency of Christ (Hebrews)",
+        },
+        {
+          url: "./assets/gallery/image00013.webp",
+          caption: "The Excellency of Christ (Hebrews)",
+        },
+        {
+          url: "./assets/gallery/image00015.webp",
+          caption: "The Excellency of Christ (Hebrews)",
+        },
+        {
+          url: "./assets/gallery/image00019.webp",
+          caption: "The Excellency of Christ (Hebrews)",
+        },
+        {
+          url: "./assets/gallery/image00021.webp",
+          caption: "The Excellency of Christ (Hebrews)",
+        },
+      ];
+
+      // JavaScript to render the gallery items
+      document.addEventListener("DOMContentLoaded", () => {
+        const galleryContainer = document.getElementById("gallery-container");
+
+        galleryImages.forEach((image, index) => {
+          // Calculate delay: 100ms, 200ms, 300ms, etc.
+          const delay = (index + 1) * 100;
+
+          const itemHtml = `
+                <div class="gallery-item rounded-xl aspect-w-4 aspect-h-3 
+                    animate__animated animate__fadeInUp" 
+                    style="min-height: 200px; animation-delay: ${delay}ms;">
+                    <img src="${image.url}" alt="${image.caption}" 
+                    loading="lazy"
+                    class="gallery-image"
+                    onerror="this.onerror=null; this.src='https://placehold.co/800x600/000000/FFFFFF?text=IMAGE+MISSING';">
+                    <div class="gallery-overlay">
+                        <p class="text-white text-lg md:text-xl font-bold tracking-wider uppercase px-4 pointer-events-none select-none">
+                            ${image.caption}
+                        </p>
+                    </div>
+                </div>
+            `;
+          galleryContainer.insertAdjacentHTML("beforeend", itemHtml);
+        });
+      });
+    </script>
   </body>
-  </html>
+</html>
