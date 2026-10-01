@@ -74,7 +74,36 @@
           0 10px 10px -5px rgba(255, 255, 255, 0.08);
       }
 
-      /* The conflicting .initial-hidden CSS has been removed */
+      /* Every card shows the same number of lines; longer quotes are cut off
+         with an ellipsis and can be read in full in the dialog */
+      .testimonial-text {
+        line-height: 1.625;
+        height: calc(1.625em * 6);
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 6;
+        line-clamp: 6;
+        overflow: hidden;
+      }
+      .testimonial-card.is-truncated {
+        cursor: pointer;
+      }
+      .testimonial-dialog {
+        width: min(42rem, calc(100% - 2rem));
+        max-height: calc(100% - 2rem);
+        overflow-y: auto;
+        padding: 0;
+        border: 1px solid #374151; /* gray-700 */
+        border-radius: 0.75rem;
+        background-color: #000;
+        color: #fff;
+      }
+      .testimonial-dialog::backdrop {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      body:has(.testimonial-dialog[open]) {
+        overflow: hidden;
+      }
     </style>
     <link
       rel="stylesheet"
@@ -111,6 +140,26 @@
         ></div>
       </div>
     </section>
+    <dialog
+      id="testimonial-dialog"
+      class="testimonial-dialog"
+      aria-labelledby="testimonial-dialog-author"
+    >
+      <div class="relative p-6 md:p-10 animate__animated animate__fadeIn animate__faster">
+        <button
+          type="button"
+          class="dialog-close absolute top-3 right-4 text-3xl leading-none text-gray-400 hover:text-white"
+          aria-label="Close"
+        >
+          &times;
+        </button>
+        <p
+          id="testimonial-dialog-text"
+          class="text-white text-lg leading-relaxed italic mt-4"
+        ></p>
+        <p id="testimonial-dialog-author" class="font-semibold text-white mt-6"></p>
+      </div>
+    </dialog>
     <hr>
      <footer class=" text-center py-4 mt-auto shadow-inner shadow-purple-200 rounded-t-md">
       <span class="text-sm text-white-600">&copy; 2025 Bible Talk with Judah. </span>
@@ -139,34 +188,64 @@
         },
       ];
 
+      const grid = document.getElementById("testimonials-grid");
+      const dialog = document.getElementById("testimonial-dialog");
+
+      // Show "Read more" only on cards whose quote doesn't fit in the clamped lines
+      function updateTruncation() {
+        grid.querySelectorAll(".testimonial-card").forEach((card) => {
+          const text = card.querySelector(".testimonial-text");
+          const truncated = text.scrollHeight > text.clientHeight + 1;
+          card.classList.toggle("is-truncated", truncated);
+          card.querySelector(".read-more").classList.toggle("invisible", !truncated);
+        });
+      }
+
+      function openTestimonial(index) {
+        const testimonial = testimonials[index];
+        document.getElementById("testimonial-dialog-text").textContent = `"${testimonial.text}"`;
+        document.getElementById("testimonial-dialog-author").textContent = testimonial.author;
+        dialog.showModal();
+      }
+
       // JavaScript to render the testimonials with sequential animation
       document.addEventListener("DOMContentLoaded", () => {
-        const grid = document.getElementById("testimonials-grid");
-
         testimonials.forEach((testimonial, index) => {
           // Calculate delay: 0.2s for the first card, 0.4s for the second, 0.6s for the third, etc.
           const delay = (index + 1) * 200;
 
           const cardHtml = `
-                    <div class="testimonial-card bg-black p-6 rounded-xl border border-gray-700 flex flex-col justify-between h-full 
-                        animate__animated animate__fadeInUp" 
-                        style="animation-delay: ${delay}ms;">
-                        <div>
-                            <p class="text-white leading-relaxed italic mb-6">
-                                "${testimonial.text}"
-                            </p>
-                        </div>
-                        
-                        <div class="flex items-center mt-4">
-                            
-                                <p class="font-semibold text-white">${testimonial.author}</p>
-                            </div>
-                        </div>
+                    <div class="testimonial-card bg-black p-6 rounded-xl border border-gray-700 flex flex-col h-full
+                        animate__animated animate__fadeInUp"
+                        style="animation-delay: ${delay}ms;"
+                        data-index="${index}">
+                        <p class="testimonial-text text-white italic">
+                            "${testimonial.text}"
+                        </p>
+                        <button type="button"
+                            class="read-more invisible self-start mt-3 text-sm font-semibold text-purple-400 hover:text-purple-300"
+                            aria-label="Read the full testimonial from ${testimonial.author}">
+                            Read more
+                        </button>
+                        <p class="font-semibold text-white mt-auto pt-6">${testimonial.author}</p>
                     </div>
                 `;
           grid.insertAdjacentHTML("beforeend", cardHtml);
         });
-        // The elements should now appear one after the other as intended!
+
+        // Re-check on resize, since the number of lines depends on the card width
+        new ResizeObserver(updateTruncation).observe(grid);
+
+        grid.addEventListener("click", (event) => {
+          const card = event.target.closest(".testimonial-card.is-truncated");
+          if (card) openTestimonial(card.dataset.index);
+        });
+
+        dialog.querySelector(".dialog-close").addEventListener("click", () => dialog.close());
+        dialog.addEventListener("click", (event) => {
+          // A click on the backdrop lands on the <dialog> itself
+          if (event.target === dialog) dialog.close();
+        });
       });
     </script>
   </body>

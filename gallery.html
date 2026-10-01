@@ -26,6 +26,10 @@
         box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.1);
       }
 
+      .gallery-item {
+        background-color: #111827; /* placeholder while the image loads */
+      }
+
       .gallery-image {
         transition: transform 0.5s ease-in-out;
         width: 100%;
@@ -172,31 +176,31 @@
       // Array of images with captions (using mock data)
       const galleryImages = [
         {
-          url: "./assets/gallery/image00001.webp",
+          name: "image00001",
           caption: "Deep Dive into Romans",
         },
         {
-          url: "./assets/gallery/image00007.webp",
+          name: "image00007",
           caption: "The Excellency of Christ (Hebrews)",
         },
         {
-          url: "./assets/gallery/image00008.webp",
+          name: "image00008",
           caption: "The Excellency of Christ (Hebrews)",
         },
         {
-          url: "./assets/gallery/image00013.webp",
+          name: "image00013",
           caption: "The Excellency of Christ (Hebrews)",
         },
         {
-          url: "./assets/gallery/image00015.webp",
+          name: "image00015",
           caption: "The Excellency of Christ (Hebrews)",
         },
         {
-          url: "./assets/gallery/image00019.webp",
+          name: "image00019",
           caption: "The Excellency of Christ (Hebrews)",
         },
         {
-          url: "./assets/gallery/image00021.webp",
+          name: "image00021",
           caption: "The Excellency of Christ (Hebrews)",
         },
       ];
@@ -213,8 +217,13 @@
                 <div class="gallery-item rounded-xl aspect-w-4 aspect-h-3 
                     animate__animated animate__fadeInUp" 
                     style="min-height: 200px; animation-delay: ${delay}ms;">
-                    <img src="${image.url}" alt="${image.caption}" 
-                    loading="lazy"
+                    <img src="./assets/optimized/gallery/${image.name}-400.webp"
+                    srcset="./assets/optimized/gallery/${image.name}-400.webp 400w,
+                            ./assets/optimized/gallery/${image.name}-800.webp 800w"
+                    sizes="(min-width: 1280px) 300px, (min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
+                    width="600" height="800"
+                    alt="${image.caption}"
+                    loading="lazy" decoding="async"
                     class="gallery-image"
                     onerror="this.onerror=null; this.src='https://placehold.co/800x600/000000/FFFFFF?text=IMAGE+MISSING';">
                     <div class="gallery-overlay">
