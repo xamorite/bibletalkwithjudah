@@ -1,0 +1,12 @@
+{
+  "name": "bibletalkwithjudah",
+  "private": true,
+  "description": "Static site for Bible Talk with Judah",
+  "scripts": {
+    "build:css": "tailwindcss -o ./assets/css/tailwind.css --minify --no-autoprefixer"
+  },
+  "devDependencies": {
+    "postcss": "8.5.28",
+    "tailwindcss": "2.2.19"
+  }
+}
