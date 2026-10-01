@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bibletalkwithjudah.vercel.app/sitemap.xml
